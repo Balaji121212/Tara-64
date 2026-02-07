@@ -1,84 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Countdown</title>
+  <title>For You Tara 🤍</title>
   <style>
-    body{
-      background:#0b0b0b;
-      color:#fff;
-      font-family: Arial;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-      text-align:center;
+    body {
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
     }
-    .box{
-      border:2px solid #ff4d88;
-      padding:30px;
-      width:330px;
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 25px;
+      text-align: center;
+      width: 320px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      position: relative;
     }
-    .time{
-      font-size:22px;
-      margin:15px 0;
-      color:#ff4d88;
+    button {
+      padding: 10px 22px;
+      border: none;
+      border-radius: 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      position: relative;
     }
-    button{
-      padding:10px 18px;
-      border:none;
-      background:#ff4d88;
-      color:white;
-      cursor:pointer;
-      margin:8px;
+    .yes {
+      background: #ff4d6d;
+      color: white;
     }
-    #no{ position:absolute; }
+    .no {
+      background: #ddd;
+      position: absolute;
+    }
+    #msg {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #ff4d6d;
+    }
   </style>
 </head>
+
 <body>
 
-<div class="box" id="count">
-  <h2>Hey Tara
-    Countdown to something special 💘</h2>
-  <div class="time" id="timer"></div>
-</div>
+<div class="card">
+  <h2>Hey Tara❤️</h2>
+  <p>
+    chellow simple program thaan…<br>
+    <b>You()</b> run aagumbodhu thaan happy 💖
+  </p>
+  <p>Will you be my Valentine? 🌹</p>
 
-<div class="box" id="love" style="display:none;">
-  <h2>Time’s up ⏰💖</h2>
-  <p>My heart waited only for YOU.</p>
-  <p>Will you be my Valentine ? 🌹</p>
-  <button onclick="yes()">YES</button>
-  <button id="no" onmouseover="move()">NO</button>
+  <button class="yes" onclick="yes()">YES</button>
+  <button class="no" id="noBtn">NO</button>
+
+  <div id="msg"></div>
 </div>
 
 <script>
-  // 👉 Set date here (Valentine example)
-  var target = new Date("Feb 14, 2026 00:00:00").getTime();
+  const noBtn = document.getElementById("noBtn");
 
-  var x = setInterval(function(){
-    var now = new Date().getTime();
-    var diff = target - now;
+  noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  });
 
-    if(diff <= 0){
-      clearInterval(x);
-      document.getElementById("count").style.display="none";
-      document.getElementById("love").style.display="block";
-    } else {
-      var d = Math.floor(diff/(1000*60*60*24));
-      var h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-      var m = Math.floor((diff%(1000*60*60))/(1000*60));
-      var s = Math.floor((diff%(1000*60))/1000);
-      document.getElementById("timer").innerHTML =
-        d+"d "+h+"h "+m+"m "+s+"s";
-    }
-  },1000);
-
-  function move(){
-    document.getElementById("no").style.left=Math.random()*300+"px";
-    document.getElementById("no").style.top=Math.random()*300+"px";
-  }
-  function yes(){
-    document.body.innerHTML =
-      "<h1 style='color:#ff66aa'>She said YES 💕🥹</h1>";
+  function yes() {
+    document.getElementById("msg").innerHTML =
+      "Program executed successfully 💍✨<br>Forever starts now 💖🥰";
   }
 </script>
 
